@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "Library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Library.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Library/1.0.0": {
+      "type": "project",
+      "path": "../../Library/Library/Library.csproj",
+      "msbuildProject": "../../Library/Library/Library.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "Library >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/j/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/j/Documents/P2/N1PokemonGrupo5/src/Program/Program/Program.csproj",
+      "projectName": "Program",
+      "projectPath": "/home/j/Documents/P2/N1PokemonGrupo5/src/Program/Program/Program.csproj",
+      "packagesPath": "/home/j/.nuget/packages/",
+      "outputPath": "/home/j/Documents/P2/N1PokemonGrupo5/src/Program/Program/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/j/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "/home/j/Documents/P2/N1PokemonGrupo5/src/Library/Library/Library.csproj": {
+              "projectPath": "/home/j/Documents/P2/N1PokemonGrupo5/src/Library/Library/Library.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/home/j/.dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
