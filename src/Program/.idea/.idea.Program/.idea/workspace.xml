@@ -8,7 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ac7471-6e76-44d2-a025-70785ea452f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Library/Library/Ataque.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Library/Library/Fachada.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Library/Library/Ataque.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/Ataque.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Library/Library/Jugador.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/Jugador.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Library/Library/Pokemon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/Pokemon.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Library/Library/bin/Debug/net8.0/Library.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/bin/Debug/net8.0/Library.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Library/Library/bin/Debug/net8.0/Library.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/bin/Debug/net8.0/Library.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Library/Library/obj/Debug/net8.0/Library.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/obj/Debug/net8.0/Library.AssemblyInfo.cs" afterDir="false" />
@@ -26,6 +29,7 @@
       <change beforePath="$PROJECT_DIR$/../Library/Library/obj/Library.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/obj/Library.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Library/Library/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Library/Library/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Library/Library/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Program/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Program/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/../Library/Library/Ataque.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Library/Library/Batalla.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Library/Library/Catalogo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Library/Library/Fachada.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Library/Library/Jugador.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Library/Library/Pokemon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program/Program.cs" root0="FORCE_HIGHLIGHTING" />
@@ -103,7 +108,7 @@
       <workItem from="1728156618425" duration="22000" />
       <workItem from="1728157071397" duration="3242000" />
       <workItem from="1728345748070" duration="88000" />
-      <workItem from="1728342406215" duration="1750000" />
+      <workItem from="1728342406215" duration="2503000" />
     </task>
     <servers />
   </component>
