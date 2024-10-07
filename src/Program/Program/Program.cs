@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
-gusing Library;
+using Library;
 
 // Ya funciona con la libreria.
 Console.WriteLine("Ejemplo!");
