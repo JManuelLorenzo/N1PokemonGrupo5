@@ -8,12 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ac7471-6e76-44d2-a025-70785ea452f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Library/.idea/.idea.Library/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Program/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Program/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/bin/Debug/net8.0/Program.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Program/bin/Debug/net8.0/Program.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/bin/Debug/net8.0/Program.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Program/bin/Debug/net8.0/Program.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/Debug/net8.0/Program.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/Debug/net8.0/ref/Program.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/Debug/net8.0/ref/Program.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/Debug/net8.0/refint/Program.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/Debug/net8.0/refint/Program.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Program/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -51,7 +65,7 @@
     <configuration name="Program" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -59,8 +73,8 @@
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/Program/Program.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="0" />
+      <option name="PROJECT_KIND" value="Unloaded" />
       <option name="PROJECT_TFM" value="" />
       <method v="2">
         <option name="Build" />
@@ -76,7 +90,8 @@
       <option name="presentableId" value="Default" />
       <updated>1728156617278</updated>
       <workItem from="1728156618425" duration="22000" />
-      <workItem from="1728157071397" duration="2258000" />
+      <workItem from="1728157071397" duration="3242000" />
+      <workItem from="1728345748070" duration="88000" />
     </task>
     <servers />
   </component>
