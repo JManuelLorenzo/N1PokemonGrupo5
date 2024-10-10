@@ -5,17 +5,17 @@ public class Facade
 
     public Facade(string nombrePlayer1, string nombrePlayer2)
     {
-        private player1 = new Player();
-        private player2 = new Player();
-        
-        
-        // Console.ReadLine(int inicial = "1) Jugar\n2) Salir");
+        Player player1 = new Player();
+        Player player2 = new Player();
+
+        string inicialInput = Console.ReadLine("");
+        int inicial = Convert.ToInt32(inicialInput);
         if (inicial == 2)
         {
-            
+
         }
 
 
-}
+    }
 
 }

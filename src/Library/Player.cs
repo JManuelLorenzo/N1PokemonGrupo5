@@ -1,6 +1,6 @@
 namespace Library;
 
-public class Jugador
+public class Player
 {
     //nombre
     //inventario (dicc pokemons)
