@@ -9,7 +9,7 @@ public class Batalla
     
     Dictionary<int, IPokemon> pokemons1; // Quizas va en el constructor, hay que probarlo.
     Dictionary<int, IPokemon> pokemons2;
-    Batalla() // no se deberia ser un metodo constructor o ono
+    Batalla() // no se si deberia ser un metodo constructor o no
     {
         
     }
@@ -40,6 +40,7 @@ public class Batalla
         ListaAtaque3.Add(PuñoFuego);
         ListaAtaque3.Add(Hidrobomba);
         ListaAtaque3.Add(Rayo);
+        Jugador
     }
 
     public void CrearPokemons()
