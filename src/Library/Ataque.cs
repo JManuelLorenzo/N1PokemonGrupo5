@@ -15,6 +15,11 @@ public class Ataque : IAtaque
         Nombre = nombre;
     }
 
+    public string GetNombre()
+    {
+        return Nombre;
+    }
+
     public int GetPower()
     {
         return Poder;

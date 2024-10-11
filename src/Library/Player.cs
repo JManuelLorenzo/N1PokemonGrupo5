@@ -1,3 +1,4 @@
+using System;
 using Library.Interface;
 
 namespace Library;
@@ -40,15 +41,24 @@ public class Player
 
         Console.WriteLine($"Elige que Pokemon va a el campo de batalla {getNombre()}// Ingresa el pokemon por el num");
         DevuelveEquipo();
-        int entrada = Convert.ToInt32(Console.ReadLine());
-        if (pokemons.ContainsKey(entrada))
         {
-            selectedPokemon = pokemons[entrada];
+            {
 
-        }
-        else
-        {
-            Console.WriteLine("No existe Pokémon con ese número.");
+            }
+            int entrada = Convert.ToInt32(Console.ReadLine());
+            if (pokemons.ContainsKey(entrada))
+            {
+                selectedPokemon = pokemons[entrada];
+
+
+            }
+            else
+            {
+                Console.WriteLine("No existe Pokémon con ese número, se te asignara uno aleatorio de tu equipo");
+                Random random = new Random();
+                int randomNumber = random.Next(1, pokemons.Count+1);
+                selectedPokemon = pokemons[randomNumber];
+            }
         }
     }
 
