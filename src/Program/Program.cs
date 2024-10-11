@@ -1,4 +1,5 @@
 ﻿using System;
+using Library;
 
 namespace Program;
 
@@ -6,10 +7,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        Facade fachada_principal = new Facade();
-
-        Console.Clear();
-        fachada_principal.startProgram();
-
+        Facade inicial = new Facade();
+        inicial.Start();
     }
+
 }
