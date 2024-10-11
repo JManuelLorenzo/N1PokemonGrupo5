@@ -41,7 +41,6 @@ public class Batalla
         ListaAtaque3.Add(PuñoFuego);
         ListaAtaque3.Add(Hidrobomba);
         ListaAtaque3.Add(Rayo);
-        Jugador
     }
 
     public void CrearPokemons()

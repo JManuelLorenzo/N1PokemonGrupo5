@@ -1,7 +1,14 @@
+using Library.Interface;
+
 namespace Library;
 
 public class Player
 {
-    //nombre
-    //inventario (dicc pokemons)
+    private string nombre { get; set; }
+    private List <IPokemon> pokemons { get; set; }
+
+    public void cambiarNombre(string valor)
+    {
+        this.nombre = valor;
+    }
 }
