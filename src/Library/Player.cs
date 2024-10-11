@@ -1,4 +1,3 @@
-using System;
 using Library.Interface;
 
 namespace Library;
@@ -19,12 +18,12 @@ public class Player
 
     public void cambiarNombre(string valor)
     {
-        this.nombre = valor;
+        nombre = valor;
     }
 
     public void cambiarEquipo(Dictionary<int, IPokemon> equipo)
     {
-        this.pokemons = equipo;
+        pokemons = equipo;
     }
 
     public void DevuelveEquipo()
@@ -32,20 +31,28 @@ public class Player
         foreach (int valor in
                  pokemons.Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
         {
-            Console.WriteLine(valor.ToString() + "-" + pokemons[valor].Name);
+            Console.WriteLine(valor + "-" + pokemons[valor].Name);
         }
     }
 
     public void cambiarPokemon()
     {
-
-        Console.WriteLine($"Elige que Pokemon va a el campo de batalla {getNombre()}// Ingresa el pokemon por el num");
         DevuelveEquipo();
         {
+            int entrada;
+            do
             {
-
-            }
-            int entrada = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    Console.WriteLine($"Elige que Pokemon va a el campo de batalla {getNombre()}// Ingresa el pokemon por el num");
+                    entrada = Convert.ToInt32(Console.ReadLine());
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Eso no era un numero, intente de vuelta");
+                }
+            } while (true);
             if (pokemons.ContainsKey(entrada))
             {
                 selectedPokemon = pokemons[entrada];
@@ -82,10 +89,8 @@ public class Player
         {
             return false;
         }
-        else
-        {
-            return true;
-        }
+
+        return true;
     }
 
     public IPokemon getSelectedPokemon()
