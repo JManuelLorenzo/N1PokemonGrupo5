@@ -97,7 +97,7 @@ namespace Library
 
             Console.WriteLine($"Es tu turno, {playerEnTurno.getNombre()}.");
             Console.WriteLine($"Tu Pokémon es {pokemonEnTurno.GetName()} y tiene {vidaPokemonEnTurno} de vida.");
-            Console.WriteLine("Pulsa A para atacar O B para cambiar");
+            Console.WriteLine("Pulsa A para atacar o cualquier letra para cambiar a el pokemon");
 
             string entrada = Console.ReadLine()?.ToUpper();
             if (entrada == "A")
