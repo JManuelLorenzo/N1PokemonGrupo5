@@ -4,12 +4,12 @@ namespace Library;
 
 public class Pokemon: IPokemon
 {
-    public Pokemon(int ataque, int health, int tipo,List<int> Hablidades )
+    public Pokemon(int ataque, int health, int tipo,List<IAtaque> Hablidades )
     {
         Ataque = ataque;
         Health = health;
         Tipo = tipo;
-        Ablities.Add(ListaAtaques);
+        Abilities = Hablidades;
         
         
     }
@@ -18,5 +18,5 @@ public class Pokemon: IPokemon
     public int Health { get; set; }
     public int Tipo { get; set; }
     
-    public List<IAtaque> Ablities { get; set; }
+    public List<IAtaque> Abilities { get; set; }
 }

@@ -1,14 +1,13 @@
 using Library.Interface;
-
+using System;
 namespace Library;
 
 public class Batalla
-{   List<IAtaque> ListaAtaque1  = new List<IAtaque>();
-    List<IAtaque> ListaAtaque2 = new List<IAtaque>();
-    List<IAtaque> ListaAtaque3 = new List<IAtaque>();
-    
-    Dictionary<int, IPokemon> pokemons1; // Quizas va en el constructor, hay que probarlo.
-    Dictionary<int, IPokemon> pokemons2;
+{  
+    List<IAtaque> ListaAtaque  = new List<IAtaque>();
+    List<IAtaque> ListaDeAtaqueFuego = new List<IAtaque>();
+    Dictionary<string, IPokemon> pokemons1; // Quizas va en el constructor, hay que probarlo.
+    Dictionary<string, IPokemon> pokemons2;
     Batalla() // no se si deberia ser un metodo constructor o no
     {
         
@@ -25,26 +24,25 @@ public class Batalla
         Ataque VientoCorte = new Ataque(40, false, "Viento Corte");
 
     // Agregar instancias a la lista
-        ListaAtaque1.Add(Rayo);
-        ListaAtaque1.Add(LanzaFuego);
-        ListaAtaque1.Add(Hidrobomba);
-        ListaAtaque1.Add(PuñoFuego);
+        ListaDeAtaqueFuego.Add(Rayo);
+        ListaDeAtaqueFuego.Add(LanzaFuego);
+        ListaDeAtaqueFuego.Add(Hidrobomba);
+        ListaDeAtaqueFuego.Add(PuñoFuego);
         
         
-        ListaAtaque2.Add(Trueno);
-        ListaAtaque2.Add(VientoCorte);
-        ListaAtaque2.Add(PuñoFuego);
-        ListaAtaque2.Add(LanzaFuego);
+        ListaAtaque.Add(Trueno);
+        ListaAtaque.Add(VientoCorte);
+        ListaAtaque.Add(PuñoFuego);
+        ListaAtaque.Add(LanzaFuego);
         
-        ListaAtaque3.Add(Trueno);
-        ListaAtaque3.Add(PuñoFuego);
-        ListaAtaque3.Add(Hidrobomba);
-        ListaAtaque3.Add(Rayo);
-        Jugador
+        ListaAtaque.Add(Trueno);
+        ListaAtaque.Add(PuñoFuego);
+        ListaAtaque.Add(Hidrobomba);
+        ListaAtaque.Add(Rayo);
     }
 
     public void CrearPokemons()
     {
-        
+        pokemons1.Add("Pidgot", new Pokemon(5, 10 , 8, ListaDeAtaqueFuego));
     }
 }

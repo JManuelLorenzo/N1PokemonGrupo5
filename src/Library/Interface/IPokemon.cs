@@ -6,5 +6,5 @@ public interface IPokemon
     public int Health { get; set; }
     public int Tipo { get; set; }
     
-    public List<int> Abilities { get; set; }
+    public List<IAtaque> Abilities { get; set; }
 }
