@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Library.Interface;
 
 namespace Library
@@ -35,24 +33,39 @@ namespace Library
             List<IAtaque> habilidadesActuales = pokemonEnTurno.GetAbilities();
 
             Console.WriteLine("Elige tu Ataque:");
-            for (int i = 0; i < habilidadesActuales.Count; i++)
+            int contador = 0;
+            foreach (var habilidad in habilidadesActuales)
             {
-                Console.WriteLine($"{i + 1}) - {habilidadesActuales[i].Nombre}");
+                contador++;
+                Console.WriteLine(contador + " - " + habilidad.GetNombre());
             }
 
             int ataqueElegido;
-            if (int.TryParse(Console.ReadLine(), out ataqueElegido) && ataqueElegido > 0 && ataqueElegido <= habilidadesActuales.Count)
+            if (int.TryParse(Console.ReadLine(), out ataqueElegido) && ataqueElegido > 0 && ataqueElegido <= 4)
             {
-                IAtaque habilidadElegida = habilidadesActuales[ataqueElegido - 1];
+                IAtaque habilidadElegida = habilidadesActuales[ataqueElegido-1];
                 int damage = ProcesamientoDaño(pokemonEnTurno, pokemonEnemigo, habilidadElegida);
                 pokemonEnemigo.RecibirDaño(damage);
-                Console.WriteLine($"Poder de ataque: {habilidadElegida.GetPower()}, Ataque del Pokémon: {pokemonEnTurno.GetAttack()}, Defensa del enemigo: {pokemonEnemigo.Defense}");
+                Console.WriteLine($"Poder de ataque: {habilidadElegida.GetPower()}, Ataque del Pokémon: {pokemonEnTurno.GetAttack()}, Defensa del enemigo: {pokemonEnemigo.GetDefense()}");
 
 
                 if (pokemonEnemigo.GetHealth() <= 0)
                 {
                     playerEnemigo.EliminarPokemon(pokemonEnemigo);
                 }
+                
+            }
+            else
+            {
+                Random random = new Random();
+                int randomNumber = random.Next(1, 5);
+                IAtaque habilidadElegida = habilidadesActuales[randomNumber-1];
+                Console.WriteLine($"Eso no es un ataque, has usado {habilidadElegida.GetNombre()} de tu pokemon");
+                
+                int damage = ProcesamientoDaño(pokemonEnTurno, pokemonEnemigo, habilidadElegida);
+                pokemonEnemigo.RecibirDaño(damage);
+                Console.WriteLine($"Poder de ataque: {habilidadElegida.GetPower()}, Ataque del Pokémon: {pokemonEnTurno.GetAttack()}, Defensa del enemigo: {pokemonEnemigo.Defense}");
+
                 
             }
             

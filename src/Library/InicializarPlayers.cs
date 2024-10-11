@@ -1,7 +1,7 @@
 using Library.Interface;
 
 namespace Library;
-using static IPokemon;
+
 public class InicializarPlayers
 {
     Player player1 = new Player();
@@ -13,10 +13,12 @@ public class InicializarPlayers
     {
         return player1;
     }
+
     public Player Rival()
     {
         return rival;
     }
+
     public void NombresPlayers()
     {
         impresiones.playerName(1);
@@ -27,12 +29,19 @@ public class InicializarPlayers
         rival.cambiarNombre(nombre2);
     }
 
-    public void EquipoPlayers()  {
+    public void EquipoPlayers()
+    {
         PokemonsYHablidades pokemonsYHablidades = new PokemonsYHablidades();
         pokemonsYHablidades.CrearPokemons();
-        
-        impresiones.mostrarListaPokemons();
 
+        impresiones.mostrarListaPokemons();
+        Console.WriteLine("Elige los pokemons de tu equipo.");
+        AsignarCadaPokemon(pokemonsYHablidades, 1,player1);
+        impresiones.mostrarListaPokemonsRival(); // 
+        AsignarCadaPokemon(pokemonsYHablidades,2,rival);
+
+
+        /*
         foreach (int valor in
                  pokemonsYHablidades.DevolverDicP1()
                      .Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
@@ -106,15 +115,66 @@ public class InicializarPlayers
                 {
                     Console.WriteLine($"Clave: {item.Key}, Valor: {item.Value.Name}");
                 }
-                
+
+    }
+    */
+        void AsignarCadaPokemon(PokemonsYHablidades ClaseCreadora, int opcion, Player player)
+        {
+            Dictionary<int, IPokemon> Dic = new Dictionary<int, IPokemon>();
+            
+            
+            if (opcion == 1)
+            {
+                Dic = ClaseCreadora.DevolverDicP1();
+            }
+            else
+            {
+                Dic = ClaseCreadora.DevolverDicP2();
+            }
+
+            foreach (int valor in
+                     Dic.Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
+            {
+                Console.WriteLine(valor + "-" + Dic[valor].GetName());
+            }
+
+            Dictionary<int, IPokemon>
+                P1equipoPorAsignar = new Dictionary<int, IPokemon>(); // Lista temporal de Pokemons
+            int contador = 0; // Empieza en 0 para hacer que los pokemons en el nuevo dic comiencen desde 1.
+            while (contador < 3) // 3 puede ser cualquier valor.
+            {
+                Console.Write("Introduce un número: ");
+                string entrada = Console.ReadLine();
+                int procesado = Convert.ToInt32(entrada);
+                if (int.TryParse(entrada, out int eleccion))
+                {
+                    contador++;
+                    Console.WriteLine($"Has elegido: {procesado}");
+                    P1equipoPorAsignar.Add(contador,
+                        Dic[procesado]); // Se van agregando los pokemons a una lista temporal
+
+                }
+                else
+                {
+                    Console.WriteLine("Entrada no válida. Por favor, introduce un número entero.");
+                }
+
+            }
+
+            player.cambiarEquipo(P1equipoPorAsignar); // Se Cambian los pokemons por el  principal
+            foreach (var item in P1equipoPorAsignar)
+            {
+                Console.WriteLine($"Clave: {item.Key}, Valor: {item.Value.Name}"); // NO se 
+            }
+        }
     }
 
     public void PokemonInicial()
-    {
-        player1.cambiarPokemon();
-        
-        rival.cambiarPokemon();
+        {
+            player1.cambiarPokemon();
+
+            rival.cambiarPokemon();
+        }
+
     }
-    
-}
-    
+

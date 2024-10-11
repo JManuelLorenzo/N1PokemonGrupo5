@@ -1,11 +1,7 @@
-using System;
-using Library.Interface;
-
 namespace Library
 {
     public class Facade
     {
-        public Facade() { }
         public void Start()
         {
             while (true)
@@ -20,7 +16,8 @@ namespace Library
                     impresion.endPrint();
                     break;
                 }
-                else if (inicial == 1)
+
+                if (inicial == 1)
                 {
                     SistemaDeCombate combate = new SistemaDeCombate();
                     combate.Combatir();

@@ -19,7 +19,7 @@ public class Pokemon: IPokemon
     public List<IAtaque> Abilities { get; set; }
 
     public int GetHealth()
-    {
+    {           
         return Health;
     }
     public void RecibirDaño(int ataque)

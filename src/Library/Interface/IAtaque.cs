@@ -7,4 +7,5 @@ public interface IAtaque
     string Nombre { get; set; }
 
     public int GetPower();
+    public string GetNombre();
 }

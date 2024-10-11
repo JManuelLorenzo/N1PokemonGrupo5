@@ -1,10 +1,8 @@
-using Library;
 namespace Library;
 
 public class Print
 {
     PokemonsYHablidades pokemonsYHablidades = new PokemonsYHablidades();
-    public Print(){}
 
     public void startPrint()
     {
@@ -50,7 +48,14 @@ public class Print
                  pokemonsYHablidades.DevolverDicP1()
                      .Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
         {
-            Console.WriteLine(valor.ToString() + "-" + pokemonsYHablidades.DevolverDicP1()[valor].Name);
+            Console.WriteLine(valor + "-" + pokemonsYHablidades.DevolverDicP1()[valor].Name);
         }
+    }
+
+    public void mostrarListaPokemonsRival()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════╗");
+        Console.WriteLine("║        Selecciona sus pokemons!         ║");
+        Console.WriteLine("╚═════════════════════════════════════════╝");
     }
 }
