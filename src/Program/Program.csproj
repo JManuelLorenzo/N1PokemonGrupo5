@@ -11,4 +11,10 @@
         <ProjectReference Include="..\Library\Library.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Library">
+        <HintPath>..\Library\bin\Debug\net8.0\Library.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

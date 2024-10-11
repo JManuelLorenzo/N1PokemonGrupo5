@@ -9,11 +9,11 @@ public class Batalla
         List<IAtaque> ListaDeAtaqueAgua = new List<IAtaque>();
         List<IAtaque> ListaDeAtaqueTierra = new List<IAtaque>();
         List<IAtaque> ListaDeAtaquePlanta = new List<IAtaque>();
-        Dictionary<string, IPokemon> pokemons1; // Quizas va en el constructor, hay que probarlo.
-        Dictionary<string, IPokemon> pokemons2;
+        Dictionary<int, IPokemon> pokemons1 = new Dictionary<string, IPokemon>(); // Quizas va en el constructor, hay que probarlo.
+        Dictionary<int, IPokemon> pokemons2 = new Dictionary<string, IPokemon>();
 
 
-        public void CrearAtaques()
+        public void CrearPokemons()
         {
                 // Ataques de Agua
                 Ataque Hidrobomba = new Ataque(90, false, "Hidrobomba");
@@ -63,52 +63,64 @@ public class Batalla
                 ListaDeAtaquePlanta.Add(TormentaVerdosa);
                 ListaDeAtaquePlanta.Add(PétalosLacerantes);
 
-        }
+        
 
-        public void CrearPokemons()
-        {
+        
+        
 
                 // Pokémon de fuego
-                Pokemon P1Charizard = new Pokemon(5, 10, ListaDeAtaqueFuego);
-                Pokemon P2Charizard = new Pokemon(5, 10, ListaDeAtaqueFuego);
-                pokemons1.Add("Charizard", P1Charizard);
-                pokemons2.Add("Charizard", P2Charizard);
+                Pokemon P1Charizard = new Pokemon("Charizard", 5, 10, 65, ListaDeAtaqueFuego); // Defensa 65
+                Pokemon P2Charizard = new Pokemon("Charizard", 5, 10, 65, ListaDeAtaqueFuego); // Defensa 65
+                pokemons1.Add(1, P1Charizard);
+                pokemons2.Add(1, P2Charizard);
 
-                // Pokémon de agua
-                Pokemon P1Gyarados = new Pokemon(6, 9, ListaDeAtaqueAgua);
-                Pokemon P2Gyarados = new Pokemon(6, 9, ListaDeAtaqueAgua);
-                pokemons1.Add("Gyarados", P1Gyarados);
-                pokemons2.Add("Gyarados", P2Gyarados);
+// Pokémon de agua
+                Pokemon P1Gyarados = new Pokemon("Gyarados", 6, 9, 79, ListaDeAtaqueAgua); // Defensa 79
+                Pokemon P2Gyarados = new Pokemon("Gyarados", 6, 9, 79, ListaDeAtaqueAgua); // Defensa 79
+                pokemons1.Add(2, P1Gyarados);
+                pokemons2.Add(2, P2Gyarados);
 
-                // Pokémon de tierra
-                Pokemon P1Golem = new Pokemon(7, 8, ListaDeAtaqueTierra);
-                Pokemon P2Golem = new Pokemon(7, 8, ListaDeAtaqueTierra);
-                pokemons1.Add("Golem", P1Golem);
-                pokemons2.Add("Golem", P2Golem);
+// Pokémon de tierra
+                Pokemon P1Golem = new Pokemon("Golem", 7, 8, 95, ListaDeAtaqueTierra); // Defensa 95
+                Pokemon P2Golem = new Pokemon("Golem", 7, 8, 95, ListaDeAtaqueTierra); // Defensa 95
+                pokemons1.Add(3, P1Golem);
+                pokemons2.Add(3, P2Golem);
 
-                // Pokémon de planta
-                Pokemon P1Venusaur = new Pokemon(5, 10, ListaDeAtaquePlanta);
-                Pokemon P2Venusaur = new Pokemon(5, 10, ListaDeAtaquePlanta);
-                pokemons1.Add("Venusaur", P1Venusaur);
-                pokemons2.Add("Venusaur", P2Venusaur);
+// Pokémon de planta
+                Pokemon P1Venusaur = new Pokemon("Venusaur", 5, 10, 83, ListaDeAtaquePlanta); // Defensa 83
+                Pokemon P2Venusaur = new Pokemon("Venusaur", 5, 10, 83, ListaDeAtaquePlanta); // Defensa 83
+                pokemons1.Add(4, P1Venusaur);
+                pokemons2.Add(4, P2Venusaur);
 
-                // Añadir más Pokémon
-                Pokemon P1Blastoise = new Pokemon(6, 10, ListaDeAtaqueAgua);
-                Pokemon P2Blastoise = new Pokemon(6, 10, ListaDeAtaqueAgua);
-                pokemons1.Add("Blastoise", P1Blastoise);
-                pokemons2.Add("Blastoise", P2Blastoise);
+// Añadir más Pokémon
+                Pokemon P1Blastoise = new Pokemon("Blastoise", 6, 10, 100, ListaDeAtaqueAgua); // Defensa 100
+                Pokemon P2Blastoise = new Pokemon("Blastoise", 6, 10, 100, ListaDeAtaqueAgua); // Defensa 100
+                pokemons1.Add(5, P1Blastoise);
+                pokemons2.Add(5, P2Blastoise);
 
-                Pokemon P1Arcanine = new Pokemon(7, 10, ListaDeAtaqueFuego);
-                Pokemon P2Arcanine = new Pokemon(7, 10, ListaDeAtaqueFuego);
-                pokemons1.Add("Arcanine", P1Arcanine);
-                pokemons2.Add("Arcanine", P2Arcanine);
+                Pokemon P1Arcanine = new Pokemon("Arcanine", 7, 10, 75, ListaDeAtaqueFuego); // Defensa 75
+                Pokemon P2Arcanine = new Pokemon("Arcanine", 7, 10, 75, ListaDeAtaqueFuego); // Defensa 75
+                pokemons1.Add(6, P1Arcanine);
+                pokemons2.Add(6, P2Arcanine);
 
-                Pokemon P1Torterra = new Pokemon(8, 10, ListaDeAtaquePlanta);
-                Pokemon P2Torterra = new Pokemon(8, 10, ListaDeAtaquePlanta);
-                pokemons1.Add("Torterra", P1Torterra);
-                pokemons2.Add("Torterra", P2Torterra);
+                Pokemon P1Torterra = new Pokemon("Torterra", 8, 10, 105, ListaDeAtaquePlanta); // Defensa 105
+                Pokemon P2Torterra = new Pokemon("Torterra", 8, 10, 105, ListaDeAtaquePlanta); // Defensa 105
+                pokemons1.Add(7, P1Torterra);
+                pokemons2.Add(7, P2Torterra);
+
+
 
         }
 
-    
+        public Dictionary<int, IPokemon> DevolverDicP1()
+        {
+                return pokemons1;
+        }
+
+        public Dictionary<int, IPokemon> DevolverDicP12()
+        {
+            return pokemons2;
+        }
+        
+
 }

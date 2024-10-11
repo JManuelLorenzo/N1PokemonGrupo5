@@ -1,10 +1,11 @@
 using System;
+using Library.Interface;
 
 namespace Library
 {
     public class Facade
     {
-        private int A = 0;  // Declare A as a class field
+       
 
         public Facade() { }
 
@@ -13,6 +14,7 @@ namespace Library
             Player player1 = new Player(); 
             Player rival = new Player();
             Batalla batalla = new Batalla();
+            
 
             while (true)
             {
@@ -39,13 +41,31 @@ namespace Library
                         rival.cambiarNombre(nombre2);
                         
                         Console.WriteLine("Selecciona tus  pokemons!");
-                        foreach (string nombre in new Batalla.DevolverDicPokemons.Keys)
+                        foreach (int valor in  batalla.DevolverDicP1().Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
                         {
-                            Console.WriteLine(nombre);
+                            Console.WriteLine(valor.ToString() + "-" + batalla.DevolverDicP1()[valor].Name);
                         }
 
-                    }
-                }
+                        List<IPokemon> equipoPorAsignar = new List<IPokemon>();
+                        int contador = 0;
+                        while (contador < 3) // 3 puede ser cualquier valor.
+                        {  Console.Write("Introduce un número: ");
+                            string entrada = Console.ReadLine();
+
+                            if (int.TryParse(entrada, out int eleccion))
+                            {
+                                Console.WriteLine($"Has elegido: {eleccion}");
+                                equipoPorAsignar.Add(batalla.DevolverDicP1()[eleccion]);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Entrada no válida. Por favor, introduce un número entero.");
+                            }
+                            
+                        }
+                        player1.cambiarEquipo(equipoPorAsignar);
+                    } 
+                
                 else
                 {
                     Console.WriteLine("Por favor, introduce un número válido (1 o 2).");

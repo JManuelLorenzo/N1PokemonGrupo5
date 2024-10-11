@@ -4,18 +4,20 @@ namespace Library;
 
 public class Pokemon: IPokemon
 {
-    public Pokemon(int ataque, int health,int defense,List<IAtaque> Hablidades )
+    public Pokemon(string name,int ataque, int health,int defense,List<IAtaque> Hablidades )
     {
+        Name = name;
         Ataque = ataque;
         Health = health;
         Defense = defense;
         Abilities = Hablidades;
     }
-
+    public string Name { get; set; }
    	public int Ataque { get; set; }
     public int Health { get; set; } 
     public int Defense { get; set; }
     public List<IAtaque> Abilities { get; set; }
+    
 
     public void RecibirDaño(int Ataque)
     {
