@@ -4,6 +4,116 @@ namespace Library;
 
 public class Batalla
 {
+
+    private Player jugador1;
+    private Player jugador2;
+    private bool turnoDeJugador1;
+
+    public SistemaDeBatalla(Player j1, Player j2)
+    {
+        jugador1 = j1;
+        jugador2 = j2;
+        turnoDeJugador1 = true;
+    }
+
+    public void IniciarBatalla()
+    {
+        Console.WriteLine("¡La batalla comienza!");
+        while (jugador1.QuedanPokemonVivos() && jugador2.QuedanPokemonVivos())
+        {
+            if (turnoDeJugador1)
+            {
+                ProcesarTurno(jugador1, jugador2);
+            }
+            else
+            {
+                ProcesarTurno(jugador2, jugador1);
+            }
+            turnoDeJugador1 = !turnoDeJugador1; 
+        }
+
+        if (jugador1.QuedanPokemonVivos())
+        {
+            Console.WriteLine("¡Player 1 gana la batalla!");
+        }
+        else
+        {
+            Console.WriteLine("¡Player 2 gana la batalla!");
+        }
+    }
+
+    private void ProcesarTurno(Player atacante, Player defensor)
+    {
+        if (!atacante.PokemonActivo.EstaVivo())
+        {
+            atacante.ForzarCambioPokemon(); 
+            return; 
+        }
+
+        bool turnoFinalizado = false;
+
+        while (!turnoFinalizado)
+        {
+            Console.WriteLine($"{atacante.PokemonActivo.Nombre} está listo para pelear.");
+            Console.WriteLine("¿Qué quieres hacer? (1) Atacar (2) Cambiar Pokémon");
+            string accion = Console.ReadLine();
+
+            if (accion == "1")
+            {
+                
+                Console.WriteLine("Selecciona un ataque:");
+                for (int i = 0; i < atacante.PokemonActivo.Abilities.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {atacante.PokemonActivo.Abilities[i].Nombre} (Poder: {atacante.PokemonActivo.Abilities[i].Poder})");
+                }
+
+                int indiceAtaque;
+                if (int.TryParse(Console.ReadLine(), out indiceAtaque) && indiceAtaque >= 1 && indiceAtaque <= atacante.PokemonActivo.Abilities.Count)
+                {
+                    Ataque ataqueSeleccionado = atacante.PokemonActivo.Abilities[indiceAtaque - 1];
+                    double N = 100;
+                    atacante.PokemonActivo.Atacar(defensor.PokemonActivo, ataqueSeleccionado, N);
+
+                    
+                    if (!defensor.PokemonActivo.EstaVivo())
+                    {
+                        defensor.ForzarCambioPokemon(); 
+                    }
+
+                    turnoFinalizado = true; 
+                }
+                else
+                {
+                    Console.WriteLine("Opción inválida. Intenta nuevamente.");
+                }
+            }
+            else if (accion == "2")
+            {
+                Console.WriteLine("Selecciona el número del Pokémon para cambiar:");
+                for (int i = 0; i < atacante.Equipo.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {atacante.Equipo[i].Nombre} (HP: {atacante.Equipo[i].Health})");
+                }
+
+                int indiceCambio;
+                if (int.TryParse(Console.ReadLine(), out indiceCambio) && atacante.CambiarPokemon(indiceCambio - 1))
+                {
+                    turnoFinalizado = true; 
+                }
+                else
+                {
+                    Console.WriteLine("Intenta nuevamente."); 
+                }
+            }
+            else
+            {
+                Console.WriteLine("Opción inválida. Intenta nuevamente.");
+            }
+        }
+    }
+}
+    
+    /*
         List<IAtaque> ListaAtaque = new List<IAtaque>();
         List<IAtaque> ListaDeAtaqueFuego = new List<IAtaque>();
         List<IAtaque> ListaDeAtaqueAgua = new List<IAtaque>();
@@ -110,5 +220,5 @@ public class Batalla
 
         }
 
-    
+    */
 }
