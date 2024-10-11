@@ -55,7 +55,7 @@ namespace Library
                             if (int.TryParse(entrada, out int eleccion))
                             {
                                 Console.WriteLine($"Has elegido: {eleccion}");
-                                equipoPorAsignar.Add(batalla.DevolverDicP1()[eleccion]);
+                                equipoPorAsignar.Add(batalla.DevolverDicP1()[eleccion]); // Se van agregando los pokemons a una lista temporal
                             }
                             else
                             {
@@ -63,7 +63,7 @@ namespace Library
                             }
                             
                         }
-                        player1.cambiarEquipo(equipoPorAsignar);
+                        player1.cambiarEquipo(equipoPorAsignar); // Se Cambian los pokemons por la lista principal
                     } 
                 
                 else

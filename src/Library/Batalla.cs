@@ -9,8 +9,8 @@ public class Batalla
         List<IAtaque> ListaDeAtaqueAgua = new List<IAtaque>();
         List<IAtaque> ListaDeAtaqueTierra = new List<IAtaque>();
         List<IAtaque> ListaDeAtaquePlanta = new List<IAtaque>();
-        Dictionary<int, IPokemon> pokemons1 = new Dictionary<string, IPokemon>(); // Quizas va en el constructor, hay que probarlo.
-        Dictionary<int, IPokemon> pokemons2 = new Dictionary<string, IPokemon>();
+        Dictionary<int, IPokemon> pokemons1 = new Dictionary<int, IPokemon>(); // Quizas va en el constructor, hay que probarlo.
+        Dictionary<int, IPokemon> pokemons2 = new Dictionary<int, IPokemon>();
 
 
         public void CrearPokemons()
