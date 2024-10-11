@@ -4,48 +4,28 @@ namespace Library;
 
 public class Pokemon: IPokemon
 {
-    public Pokemon(int ataque, int health,int defense,List<IAtaque> Hablidades )
+    public Pokemon(string name,int ataque, int health,int defense,List<IAtaque> hablidades )
     {
+        Name = name;
         Ataque = ataque;
         Health = health;
         Defense = defense;
-        Abilities = Hablidades;
+        Abilities = hablidades;
     }
-
-    public bool EstaVivo()
-    {
-        return Health > 0;
-    }
-    
-    public string Nombre { get; set; }
-   	public double Ataque { get; set; }
-    public double Health { get; set; } 
-    public double Defense { get; set; }
+    public string Name { get; set; }
+   	public int Ataque { get; set; }
+    public int Health { get; set; } 
+    public int Defense { get; set; }
     public List<IAtaque> Abilities { get; set; }
-    public bool EstaDebilitado { get; private set; } = false;
-    public class CalculadoraDaño
+    
+
+    public void RecibirDaño(int Ataque)
     {
-        public static double CalcularDaño(double N, double A, double P, double D) 
-        {
-            double parte1 = (0.2 * 100 + 1) * A * P;
-            double parte2 = parte1 / (25 * D);
-            double daño = 0.01 * (parte2 + 2);
-        
-            return daño;
-        }
+        Health = Health - (Defense-Ataque);
     }
-    public void Atacar(IPokemon enemigo, Ataque ataqueSeleccionado, double N)
+    public void Atacar(IPokemon Pokemon)
     {
-        double daño = CalculadoraDaño.CalcularDaño(N, Ataque + ataqueSeleccionado.Poder, ataqueSeleccionado.Poder,
-            enemigo.Defensa);
-
-        enemigo.Health -= daño;
-
-        if (enemigo.Health <= 0)
-        {
-            enemigo.Health = 0;
-            enemigo.EstaDebilitado = true;
-        }
+        Pokemon.RecibirDaño(Ataque);
     }
     
 }
