@@ -44,12 +44,14 @@ public class Print
         Console.WriteLine("╔═════════════════════════════════════════╗");
         Console.WriteLine("║        Selecciona tus pokemons!         ║");
         Console.WriteLine("╚═════════════════════════════════════════╝");
-        foreach (int valor in
-                 pokemonsYHablidades.DevolverDicP1()
-                     .Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
+        foreach (int valor in pokemonsYHablidades.DevolverDicP1().Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
         {
-            Console.WriteLine(valor + "-" + pokemonsYHablidades.DevolverDicP1()[valor].Name);
+            Console.WriteLine("╔═════════════════════════════════════════╗");
+            Console.WriteLine(valor + "-" + pokemonsYHablidades.DevolverDicP1()[valor].Name + " ║");
+            Console.WriteLine("╚═════════════════════════════════════════╝");
+
         }
+        
     }
 
     public void mostrarListaPokemonsRival()
