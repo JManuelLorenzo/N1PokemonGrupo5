@@ -10,8 +10,9 @@ namespace Library
 
         public void Start()
         {
-            Player player1 = new Player();
+            Player player1 = new Player(); 
             Player rival = new Player();
+            
 
             while (true)
             {
@@ -19,10 +20,8 @@ namespace Library
                 Console.WriteLine("1) Iniciar\n2) Salir");
                 
                 string inicialInput = Console.ReadLine();
-
-                // Try to parse the input and handle errors
-                if (int.TryParse(inicialInput, out int inicial))
-                {
+                int inicial = int.Parse(inicialInput);
+                
                     if (inicial == 2)
                     {
                         Console.Clear();
@@ -32,11 +31,15 @@ namespace Library
 
                     if (inicial == 1)
                     {
-                        Console.WriteLine("Ingrese el nombre del Juador 1: ");
+                        Console.WriteLine("Ingrese el nombre del Jugador 1: ");
                         string nombre1 = Console.ReadLine();
+                        player1.cambiarNombre(nombre1);
+                        Console.WriteLine("Ingrese el nombre del Juador 1: ");
+                        
+                        
                         
                         Console.WriteLine("Seleccione los pokemons!");
-                        foreach (Pokemon p in ListaPokemnos)
+                        foreach (Pokemon p in 10)
                         {
                             Console.Write(" "+ p);
                         }
