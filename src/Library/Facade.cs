@@ -13,7 +13,7 @@ namespace Library
         {
             Player player1 = new Player(); 
             Player rival = new Player();
-            Batalla batalla = new Batalla();
+            PokemonsYHablidades pokemonsYHablidades = new PokemonsYHablidades();
             
 
             while (true)
@@ -41,29 +41,34 @@ namespace Library
                         rival.cambiarNombre(nombre2);
                         
                         Console.WriteLine("Selecciona tus  pokemons!");
-                        foreach (int valor in  batalla.DevolverDicP1().Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
+                        foreach (int valor in  pokemonsYHablidades.DevolverDicP1().Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
                         {
-                            Console.WriteLine(valor.ToString() + "-" + batalla.DevolverDicP1()[valor].Name);
+                            Console.WriteLine(valor.ToString() + "-" + pokemonsYHablidades.DevolverDicP1()[valor].Name);
                         }
 
-                        List<IPokemon> equipoPorAsignar = new List<IPokemon>();
-                        int contador = 0;
+                        Dictionary<int,IPokemon> equipoPorAsignar = new Dictionary<int,IPokemon>(); // Lista temporal de Pokemons
+                        int contador = 0; // Empieza en 0 para hacer que los pokemons en el nuevo dic comiencen desde 1.
                         while (contador < 3) // 3 puede ser cualquier valor.
                         {  Console.Write("Introduce un número: ");
                             string entrada = Console.ReadLine();
 
                             if (int.TryParse(entrada, out int eleccion))
                             {
+                                contador++;
                                 Console.WriteLine($"Has elegido: {eleccion}");
-                                equipoPorAsignar.Add(batalla.DevolverDicP1()[eleccion]); // Se van agregando los pokemons a una lista temporal
-                            }
+                                equipoPorAsignar.Add(contador,pokemonsYHablidades.DevolverDicP1()[eleccion]); // Se van agregando los pokemons a una lista temporal
+                                
+                            }  
                             else
                             {
                                 Console.WriteLine("Entrada no válida. Por favor, introduce un número entero.");
                             }
                             
                         }
-                        player1.cambiarEquipo(equipoPorAsignar); // Se Cambian los pokemons por la lista principal
+                        
+                        player1.cambiarEquipo(equipoPorAsignar); // Se Cambian los pokemons por el  principal
+                        Console.WriteLine($"Genial el Equipo de tu rival se decidira de manera aleatoria.");
+                        
                     } 
                 
                 else
@@ -71,6 +76,9 @@ namespace Library
                     Console.WriteLine("Por favor, introduce un número válido (1 o 2).");
                     Console.ReadLine(); 
                 }
+                    
+                
+                
             }
         }
     }

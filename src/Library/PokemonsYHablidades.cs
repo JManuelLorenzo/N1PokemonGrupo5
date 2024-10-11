@@ -2,7 +2,7 @@ using Library.Interface;
 using System;
 namespace Library;
 
-public class Batalla
+public class PokemonsYHablidades
 {
         List<IAtaque> ListaAtaque = new List<IAtaque>();
         List<IAtaque> ListaDeAtaqueFuego = new List<IAtaque>();
@@ -117,7 +117,7 @@ public class Batalla
                 return pokemons1;
         }
 
-        public Dictionary<int, IPokemon> DevolverDicP12()
+        public Dictionary<int, IPokemon> DevolverDicP2()
         {
             return pokemons2;
         }
