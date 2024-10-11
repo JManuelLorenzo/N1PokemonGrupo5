@@ -14,7 +14,7 @@ namespace Library
             Player player1 = new Player(); 
             Player rival = new Player();
             PokemonsYHablidades pokemonsYHablidades = new PokemonsYHablidades();
-            
+            pokemonsYHablidades.CrearPokemons();
 
             while (true)
             {
@@ -51,12 +51,12 @@ namespace Library
                         while (contador < 3) // 3 puede ser cualquier valor.
                         {  Console.Write("Introduce un número: ");
                             string entrada = Console.ReadLine();
-
+                                int procesado  = Convert.ToInt32(entrada);
                             if (int.TryParse(entrada, out int eleccion))
                             {
                                 contador++;
-                                Console.WriteLine($"Has elegido: {eleccion}");
-                                equipoPorAsignar.Add(contador,pokemonsYHablidades.DevolverDicP1()[eleccion]); // Se van agregando los pokemons a una lista temporal
+                                Console.WriteLine($"Has elegido: {procesado}");
+                                equipoPorAsignar.Add(contador,pokemonsYHablidades.DevolverDicP1()[procesado]); // Se van agregando los pokemons a una lista temporal
                                 
                             }  
                             else
