@@ -22,13 +22,22 @@ public class Pokemon: IPokemon
     {
         return Health;
     }
-    public void RecibirDaño(int Ataque)
+    public void RecibirDaño(int ataque)
     {
-        Health = Health - (Defense-Ataque);
+        if (ataque > Health)
+        {
+            Health = 0;
+        }
+        else
+        {
+            Health = Health - ataque;
+        }
     }
-    public void Atacar(IPokemon Pokemon)
+
+
+    public void Atacar(IPokemon pokemonEnemigo)
     {
-        Pokemon.RecibirDaño(Ataque);
+        pokemonEnemigo.RecibirDaño(Ataque);
     }
 
     public List<IAtaque> GetAbilities()
@@ -44,5 +53,10 @@ public class Pokemon: IPokemon
     public string GetName()
     {
         return Name;
+    }
+
+    public int GetDefense()
+    {
+        return Defense;
     }
 }

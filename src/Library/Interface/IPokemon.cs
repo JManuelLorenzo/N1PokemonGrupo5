@@ -14,4 +14,5 @@ public interface IPokemon
     public void Atacar(IPokemon Pokemon);
     public void RecibirDaño(int Ataque);
     public string GetName();
+    public int GetDefense();
 }

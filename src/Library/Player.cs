@@ -38,7 +38,7 @@ public class Player
     public void cambiarPokemon()
     {
 
-        Console.WriteLine("Elige que Pokemon va a el campo de batalla!!!// Ingresa el pokemon por el num");
+        Console.WriteLine($"Elige que Pokemon va a el campo de batalla {getNombre()}// Ingresa el pokemon por el num");
         DevuelveEquipo();
         int entrada = Convert.ToInt32(Console.ReadLine());
         if (pokemons.ContainsKey(entrada))
@@ -81,5 +81,10 @@ public class Player
     public IPokemon getSelectedPokemon()
     {
         return selectedPokemon;
+    }
+
+    public string getNombre()
+    {
+        return nombre;
     }
 }

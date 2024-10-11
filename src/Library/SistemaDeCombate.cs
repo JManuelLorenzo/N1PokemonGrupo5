@@ -1,84 +1,124 @@
+using System;
+using System.Collections.Generic;
 using Library.Interface;
 
-namespace Library;
-
-public class SistemaDeCombate
+namespace Library
 {
-    public void Combatir()
+    public class SistemaDeCombate
     {
-        InicializarPlayers ejemplo = new InicializarPlayers();
-        ejemplo.NombresPlayers();
-        ejemplo.EquipoPlayers();
-        ejemplo.PokemonInicial();
-        Player jugador1 = ejemplo.Jugador();
-        Player rival = ejemplo.Rival();
-        while (jugador1.QuedanPokemons() && rival.QuedanPokemons())
+        public void Combatir()
         {
-         turno(jugador1, rival);
-         turno(rival, jugador1);
-        }
+            InicializarPlayers ejemplo = new InicializarPlayers();
+            ejemplo.NombresPlayers();
+            ejemplo.EquipoPlayers();
+            ejemplo.PokemonInicial();
+            Player jugador1 = ejemplo.Jugador();
+            Player rival = ejemplo.Rival();
 
-        Console.WriteLine("El juego ha terminado");
-        Console.ReadLine();
-    }
-
-    public void Atacar(Player playerEnTurno, Player playerEnemigo)
-    {
-        
-        IPokemon pokemonenturno = playerEnTurno.getSelectedPokemon();
-        IPokemon pokemonenemigo = playerEnemigo.getSelectedPokemon();
-        List<IAtaque>HablidadesActuales = pokemonenturno.GetAbilities();
-        Console.WriteLine("Elige tu Ataque:");
-        int contador = 0;
-        foreach (var ataque in HablidadesActuales)
-        {
-            contador++;
-
-        Console.WriteLine($"{contador})" + " - "+ ataque.Nombre +"\n");
-        int ataqueElegido = Convert.ToInt32(Console.ReadLine());
-        IAtaque HablidadElegida = HablidadesActuales[ataqueElegido];
-        int Damage = procesamientoDaño(pokemonenturno, HablidadElegida);
-        pokemonenemigo.RecibirDaño(Damage);
-
-        }
-    } 
-
-    public void turno(Player playerenturno, Player playerenemigo)
-    {
-        IPokemon pokemonenturno = playerenturno.getSelectedPokemon();
-        IPokemon pokemonenemigo = playerenemigo.getSelectedPokemon();
-
-        int VidaPokemonEnTurno = pokemonenturno.GetHealth();
-        if (VidaPokemonEnTurno == 0)
-        {
-            playerenturno.EliminarPokemon(pokemonenturno);
-            playerenturno.cambiarPokemon();
-        }
-        else
-        {
-            Console.WriteLine("Es tu Turno, Que quieres hacer?");
-            Console.WriteLine($"Tu pokemon es {pokemonenturno.GetName()} y tiene {VidaPokemonEnTurno} de vida");
-            Console.WriteLine("pulsa A para atacar O B para cambiar");
-            string Entrada = Console.ReadLine();
-            if (Entrada == "A")
+            while (jugador1.QuedanPokemons() && rival.QuedanPokemons())
             {
-                Atacar(playerenturno, playerenemigo);
+                turno(jugador1, rival);
+                if (rival.QuedanPokemons())
+                {
+                    turno(rival, jugador1);
+                }
+            }
+
+            Console.WriteLine("El juego ha terminado");
+            Console.ReadLine();
+        }
+
+        public void Atacar(Player playerEnTurno, Player playerEnemigo)
+        {
+            IPokemon pokemonEnTurno = playerEnTurno.getSelectedPokemon();
+            IPokemon pokemonEnemigo = playerEnemigo.getSelectedPokemon();
+            List<IAtaque> habilidadesActuales = pokemonEnTurno.GetAbilities();
+
+            Console.WriteLine("Elige tu Ataque:");
+            for (int i = 0; i < habilidadesActuales.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}) - {habilidadesActuales[i].Nombre}");
+            }
+
+            int ataqueElegido;
+            if (int.TryParse(Console.ReadLine(), out ataqueElegido) && ataqueElegido > 0 && ataqueElegido <= habilidadesActuales.Count)
+            {
+                IAtaque habilidadElegida = habilidadesActuales[ataqueElegido - 1];
+                int damage = ProcesamientoDaño(pokemonEnTurno, habilidadElegida);
+                pokemonEnemigo.RecibirDaño(damage);
+
+                if (damage > 0)
+                {
+                    Console.WriteLine($"{pokemonEnTurno.GetName()} atacó a {pokemonEnemigo.GetName()} causando {damage} de daño.");
+                }
+                else
+                {
+                    Console.WriteLine($"{pokemonEnTurno.GetName()} no logró causar daño a {pokemonEnemigo.GetName()}.");
+                }
+
+                if (pokemonEnemigo.GetHealth() <= 0)
+                {
+                    playerEnemigo.EliminarPokemon(pokemonEnemigo);
+                }
             }
             else
             {
-                playerenturno.cambiarPokemon();
+                Console.WriteLine("Ataque no válido. Inténtalo de nuevo.");
             }
         }
 
-        pokemonenturno.Atacar(pokemonenemigo);
-    }
 
-    public int procesamientoDaño(IPokemon pokemon, IAtaque habilidad)
-    {
-        
-        int ValorDeDañoPokemon = pokemon.GetAttack();
-        int ValorDePotenciaHablidad = habilidad.GetPower();
-        int DañoTotalPokemon = ValorDeDañoPokemon * (ValorDePotenciaHablidad / 80);
-        return DañoTotalPokemon;
+        public void turno(Player playerEnTurno, Player playerEnemigo)
+        {
+            IPokemon pokemonEnTurno = playerEnTurno.getSelectedPokemon();
+            int vidaPokemonEnTurno = pokemonEnTurno.GetHealth();
+
+            if (vidaPokemonEnTurno <= 0)
+            {
+                playerEnTurno.EliminarPokemon(pokemonEnTurno);
+                if (playerEnTurno.QuedanPokemons())
+                {
+                    playerEnTurno.cambiarPokemon();
+                    pokemonEnTurno = playerEnTurno.getSelectedPokemon();
+                    vidaPokemonEnTurno = pokemonEnTurno.GetHealth();
+                }
+                else
+                {
+                    Console.WriteLine($"{playerEnTurno.getNombre()} no tiene más Pokémon para combatir.");
+                    return; // Termina el turno si no hay más Pokémon
+                }
+            }
+
+            Console.WriteLine($"Es tu turno, {playerEnTurno.getNombre()}.");
+            Console.WriteLine($"Tu Pokémon es {pokemonEnTurno.GetName()} y tiene {vidaPokemonEnTurno} de vida.");
+            Console.WriteLine("Pulsa A para atacar O B para cambiar");
+
+            string entrada = Console.ReadLine()?.ToUpper();
+            if (entrada == "A")
+            {
+                Atacar(playerEnTurno, playerEnemigo);
+            }
+            else if (entrada == "B")
+            {
+                playerEnTurno.cambiarPokemon();
+                pokemonEnTurno = playerEnTurno.getSelectedPokemon();
+            }
+
+            // Atacar después de la acción, si el Pokémon sigue vivo
+            if (vidaPokemonEnTurno > 0)
+            {
+                pokemonEnTurno.Atacar(playerEnemigo.getSelectedPokemon());
+            }
+        }
+
+        public int ProcesamientoDaño(IPokemon pokemon, IAtaque habilidad)
+        {
+            int valorDeDañoPokemon = pokemon.GetAttack();
+            int valorDePotenciaHabilidad = habilidad.GetPower();
+            int dañoTotalPokemon = Math.Max(0, valorDeDañoPokemon + valorDePotenciaHabilidad - pokemon.GetDefense());
+
+            return dañoTotalPokemon;
+        }
+
     }
 }
