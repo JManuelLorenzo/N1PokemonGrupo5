@@ -12,7 +12,7 @@ namespace Library
         {
             Player player1 = new Player(); 
             Player rival = new Player();
-            
+            Batalla batalla = new Batalla();
 
             while (true)
             {
@@ -34,16 +34,16 @@ namespace Library
                         Console.WriteLine("Ingrese el nombre del Jugador 1: ");
                         string nombre1 = Console.ReadLine();
                         player1.cambiarNombre(nombre1);
-                        Console.WriteLine("Ingrese el nombre del Juador 1: ");
-                        
-                        
-                        
-                        Console.WriteLine("Seleccione los pokemons!");
-                        foreach (Pokemon p in 10)
-                        {
-                            Console.Write(" "+ p);
-                        }
+                        Console.WriteLine("Ingrese el nombre del Jugador 2: ");
                         string nombre2 = Console.ReadLine();
+                        rival.cambiarNombre(nombre2);
+                        
+                        Console.WriteLine("Selecciona tus  pokemons!");
+                        foreach (string nombre in new Batalla.DevolverDicPokemons.Keys)
+                        {
+                            Console.WriteLine(nombre);
+                        }
+
                     }
                 }
                 else
