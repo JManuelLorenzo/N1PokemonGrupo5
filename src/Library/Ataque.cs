@@ -14,6 +14,6 @@ public class Ataque : IAtaque
         Especial = especial;
         Nombre = nombre;
     }
-
+    
 
 }
