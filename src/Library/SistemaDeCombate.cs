@@ -46,15 +46,10 @@ namespace Library
                 IAtaque habilidadElegida = habilidadesActuales[ataqueElegido - 1];
                 int damage = ProcesamientoDaño(pokemonEnTurno, habilidadElegida);
                 pokemonEnemigo.RecibirDaño(damage);
-
-                if (damage > 0)
-                {
+                
                     Console.WriteLine($"{pokemonEnTurno.GetName()} atacó a {pokemonEnemigo.GetName()} causando {damage} de daño.");
-                }
-                else
-                {
-                    Console.WriteLine($"{pokemonEnTurno.GetName()} no logró causar daño a {pokemonEnemigo.GetName()}.");
-                }
+                
+                
 
                 if (pokemonEnemigo.GetHealth() <= 0)
                 {
