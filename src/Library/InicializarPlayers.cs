@@ -1,4 +1,5 @@
 using Library.Interface;
+using Library;
 
 namespace Library;
 using static IPokemon;
@@ -6,68 +7,45 @@ public class InicializarPlayers
 {
     Player player1 = new Player();
     Player rival = new Player();
+    Print impresiones = new Print();
 
-    public Player Jugador()
-    {
-        return player1;
-    }
-    public Player Rival()
-    {
-        return rival;
-    }
+    public Player Jugador() { return player1; }
+    public Player Rival() { return rival; }
     public void NombresPlayers()
     {
-        bool flag = true;
-        while (flag == true)
-        {
-            Console.Clear();
-            Console.WriteLine("1) Iniciar\n2) Salir");
-
-            string inicialInput = Console.ReadLine();
-            int inicial = int.Parse(inicialInput);
-
-            if (inicial == 2)
-            {
-                Console.Clear();
-                Console.WriteLine("Nos vemos pronto!");
-                flag = false;
-            }
-
-            if (inicial == 1)
-            {
-                Console.WriteLine("Ingrese el nombre del Jugador 1: ");
-                string nombre1 = Console.ReadLine();
-                player1.cambiarNombre(nombre1);
-                Console.WriteLine("Ingrese el nombre del Jugador 2: ");
-                string nombre2 = Console.ReadLine();
-                rival.cambiarNombre(nombre2);
-                flag = false;
-
-            }
-            else
-            {
-                Console.WriteLine("Por favor, introduce un número válido (1 o 2).");
-                Console.ReadLine();
-            }
-        }
+        
+        //Player 1 Name Input
+        impresiones.PlayerNameInsertion(1);
+        string nombre1 = Console.ReadLine();
+        player1.cambiarNombre(nombre1);
+        
+        impresiones.PlayerNameInsertion(2);
+        string nombre2 = Console.ReadLine();
+        rival.cambiarNombre(nombre2);
+        
     }
+
 
     public void EquipoPlayers()  {
         PokemonsYHablidades pokemonsYHablidades = new PokemonsYHablidades();
         pokemonsYHablidades.CrearPokemons();
 
-       
-
-                Console.WriteLine("Selecciona tus  pokemons!");
-                foreach (int valor in
-                         pokemonsYHablidades.DevolverDicP1()
-                             .Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
-                {
-                    Console.WriteLine(valor.ToString() + "-" + pokemonsYHablidades.DevolverDicP1()[valor].Name);
-                }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Quiero que este foreach se pueda imprimir en el metodo pokemonSelection de la calse Print
+        // var send1 = pokemonsYHablidades.DevolverDicP1().Keys.ToList(); ---- \ Estos fueron intentos fallidos
+        // var send2 = pokemonsYHablidades.DevolverDicP2().Keys.ToList(); ---- /
+    
+        foreach (int valor in pokemonsYHablidades.DevolverDicP1().Keys)
+        {
+            Console.WriteLine("╔═════════════════════════════════════════╗");
+            Console.WriteLine("║ " + valor.ToString() + " - " + pokemonsYHablidades.DevolverDicP1()[valor].Name + " ║");
+            Console.WriteLine("╚═════════════════════════════════════════╝");
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 Dictionary<int, IPokemon>
                     P1equipoPorAsignar = new Dictionary<int, IPokemon>(); // Lista temporal de Pokemons
+                
                 int contador = 0; // Empieza en 0 para hacer que los pokemons en el nuevo dic comiencen desde 1.
                 while (contador < 3) // 3 puede ser cualquier valor.
                 {
