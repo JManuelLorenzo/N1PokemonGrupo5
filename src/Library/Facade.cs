@@ -67,7 +67,11 @@ namespace Library
                         }
                         
                         player1.cambiarEquipo(equipoPorAsignar); // Se Cambian los pokemons por el  principal
-                        Console.WriteLine($"Genial el Equipo de tu rival se decidira de manera aleatoria.");
+                        foreach (var item in equipoPorAsignar)
+                        {
+                            Console.WriteLine($"Clave: {item.Key}, Valor: {item.Value.Name}");
+                        }
+                        Console.WriteLine($"Elije.");
                         
                     } 
                 
@@ -76,9 +80,10 @@ namespace Library
                     Console.WriteLine("Por favor, introduce un número válido (1 o 2).");
                     Console.ReadLine(); 
                 }
-                    
-                
-                
+
+                Console.ReadLine();
+
+
             }
         }
     }
