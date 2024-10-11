@@ -8,6 +8,7 @@ namespace Library
     {
         public void Combatir()
         {
+            Print impresion = new Print();
             InicializarPlayers ejemplo = new InicializarPlayers();
             ejemplo.NombresPlayers();
             ejemplo.EquipoPlayers();
@@ -24,8 +25,7 @@ namespace Library
                 }
             }
 
-            Console.WriteLine("El juego ha terminado");
-            Console.ReadLine();
+            impresion.finDelJuego(); //Finaliza el juego
         }
 
         public void Atacar(Player playerEnTurno, Player playerEnemigo)
