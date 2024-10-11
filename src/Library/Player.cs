@@ -54,7 +54,7 @@ public class Player
 
     public void EliminarPokemon(IPokemon pokemon)
     {
-        Console.WriteLine($"El pokemon {pokemon} R.I.P del player {nombre}");
+        Console.WriteLine($"El pokemon {getSelectedPokemon().GetName()} R.I.P del player {nombre}");
         foreach (int pair in pokemons.Keys)
         {
             if (pokemons[pair].GetHealth() == 0)

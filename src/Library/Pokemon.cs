@@ -24,15 +24,15 @@ public class Pokemon: IPokemon
     }
     public void RecibirDaño(int ataque)
     {
-        if (ataque > Health)
-        {
+        int dañoReal = Math.Max(0, ataque - Defense); // El daño no puede ser menor que 0
+        Health -= dañoReal;
+
+        if (Health < 0)
             Health = 0;
-        }
-        else
-        {
-            Health = Health - ataque;
-        }
+
+        Console.WriteLine($"{Name} recibió {dañoReal} de daño y ahora tiene {Health} de vida.");
     }
+
 
 
     public void Atacar(IPokemon pokemonEnemigo)

@@ -44,22 +44,18 @@ namespace Library
             if (int.TryParse(Console.ReadLine(), out ataqueElegido) && ataqueElegido > 0 && ataqueElegido <= habilidadesActuales.Count)
             {
                 IAtaque habilidadElegida = habilidadesActuales[ataqueElegido - 1];
-                int damage = ProcesamientoDaño(pokemonEnTurno, habilidadElegida);
+                int damage = ProcesamientoDaño(pokemonEnTurno, pokemonEnemigo, habilidadElegida);
                 pokemonEnemigo.RecibirDaño(damage);
-                
-                    Console.WriteLine($"{pokemonEnTurno.GetName()} atacó a {pokemonEnemigo.GetName()} causando {damage} de daño.");
-                
-                
+                Console.WriteLine($"Poder de ataque: {habilidadElegida.GetPower()}, Ataque del Pokémon: {pokemonEnTurno.GetAttack()}, Defensa del enemigo: {pokemonEnemigo.Defense}");
+
 
                 if (pokemonEnemigo.GetHealth() <= 0)
                 {
                     playerEnemigo.EliminarPokemon(pokemonEnemigo);
                 }
+                
             }
-            else
-            {
-                Console.WriteLine("Ataque no válido. Inténtalo de nuevo.");
-            }
+            
         }
 
 
@@ -93,24 +89,18 @@ namespace Library
             {
                 Atacar(playerEnTurno, playerEnemigo);
             }
-            else if (entrada == "B")
+            else 
             {
                 playerEnTurno.cambiarPokemon();
                 pokemonEnTurno = playerEnTurno.getSelectedPokemon();
             }
-
-            // Atacar después de la acción, si el Pokémon sigue vivo
-            if (vidaPokemonEnTurno > 0)
-            {
-                pokemonEnTurno.Atacar(playerEnemigo.getSelectedPokemon());
-            }
         }
 
-        public int ProcesamientoDaño(IPokemon pokemon, IAtaque habilidad)
-        {
-            int valorDeDañoPokemon = pokemon.GetAttack();
+        public int ProcesamientoDaño(IPokemon pokemonactual,IPokemon pokemonenemigo ,IAtaque habilidad)
+        {   
+            int valorDeDañoPokemon = pokemonactual.GetAttack();
             int valorDePotenciaHabilidad = habilidad.GetPower();
-            int dañoTotalPokemon = Math.Max(0, valorDeDañoPokemon + valorDePotenciaHabilidad - pokemon.GetDefense());
+            int dañoTotalPokemon = Math.Max(0, valorDeDañoPokemon + valorDePotenciaHabilidad - pokemonenemigo.GetDefense());
 
             return dañoTotalPokemon;
         }
