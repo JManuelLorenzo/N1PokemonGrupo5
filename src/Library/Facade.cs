@@ -11,11 +11,10 @@ namespace Library
 
         public void Start()
         {
-             InicializarPlayers ejemplo = new InicializarPlayers();
-             ejemplo.NombresPlayers();
-             ejemplo.EquipoPlayers();
-             ejemplo.PokemonInicial();
+            
+             SistemaDeCombate combate = new SistemaDeCombate();
+             combate.Combatir();
 
-            }
+        }
         }
     }

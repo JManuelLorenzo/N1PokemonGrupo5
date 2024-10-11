@@ -14,6 +14,11 @@ public class Ataque : IAtaque
         Especial = especial;
         Nombre = nombre;
     }
+
+    public int GetPower()
+    {
+        return Poder;
+    }
     
 
 }

@@ -57,7 +57,7 @@ public class Player
         Console.WriteLine($"El pokemon {pokemon} R.I.P del player {nombre}");
         foreach (int pair in pokemons.Keys)
         {
-            if (pokemons[pair] == pokemon)
+            if (pokemons[pair].GetHealth() == 0)
             {
                 pokemons.Remove(pair);
                 
@@ -76,5 +76,10 @@ public class Player
         {
             return true;
         }
+    }
+
+    public IPokemon getSelectedPokemon()
+    {
+        return selectedPokemon;
     }
 }

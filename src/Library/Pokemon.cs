@@ -17,8 +17,11 @@ public class Pokemon: IPokemon
     public int Health { get; set; } 
     public int Defense { get; set; }
     public List<IAtaque> Abilities { get; set; }
-    
 
+    public int GetHealth()
+    {
+        return Health;
+    }
     public void RecibirDaño(int Ataque)
     {
         Health = Health - (Defense-Ataque);
@@ -27,5 +30,19 @@ public class Pokemon: IPokemon
     {
         Pokemon.RecibirDaño(Ataque);
     }
-    
+
+    public List<IAtaque> GetAbilities()
+    {
+        return Abilities;
+    }
+
+    public int GetAttack()
+    {
+        return Ataque;
+    }
+
+    public string GetName()
+    {
+        return Name;
+    }
 }
