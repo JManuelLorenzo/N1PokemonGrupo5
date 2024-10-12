@@ -73,11 +73,16 @@ public class InicializarPlayers
         
                     // Verifica que el número esté en el rango válido
                     if (procesado > 0 && procesado <= Dic.Count)
-                    {
-                        contador++;
-                        Console.WriteLine($"Has elegido: {procesado}");
-                        P1equipoPorAsignar.Add(contador, Dic[procesado]); // Se van agregando los pokemons a una lista temporal
-                    }
+                        if (P1equipoPorAsignar.ContainsKey(procesado))
+                        {
+                            Console.WriteLine("Elige un pokemon diferente al que ya tienes.");
+                        }
+                        else
+                        {
+                            contador++;
+                            Console.WriteLine($"Has elegido: {procesado}");
+                            P1equipoPorAsignar.Add(contador, Dic[procesado]); // Se van agregando los pokemons a una lista temporal    
+                        }
                     else
                     {
                         Console.WriteLine("Entrada no válida. Por favor, introduce un número entero entre 1 y " + Dic.Count + ".");
