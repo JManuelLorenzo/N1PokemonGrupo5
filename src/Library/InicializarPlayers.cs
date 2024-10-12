@@ -59,28 +59,40 @@ public class InicializarPlayers
                 Console.WriteLine(valor + "-" + Dic[valor].GetName());
             }
 
-            Dictionary<int, IPokemon>
-                P1equipoPorAsignar = new Dictionary<int, IPokemon>(); // Lista temporal de Pokemons
+            Dictionary<int, IPokemon> P1equipoPorAsignar = new Dictionary<int, IPokemon>(); // Lista temporal de Pokemons
             int contador = 0; // Empieza en 0 para hacer que los pokemons en el nuevo dic comiencen desde 1.
+
             while (contador < 3) // 3 puede ser cualquier valor.
             {
                 Console.Write("Introduce un número: ");
                 string entrada = Console.ReadLine();
-                int procesado = Convert.ToInt32(entrada);
-                if (int.TryParse(entrada, out int eleccion))
-                {
-                    contador++;
-                    Console.WriteLine($"Has elegido: {procesado}");
-                    P1equipoPorAsignar.Add(contador,
-                        Dic[procesado]); // Se van agregando los pokemons a una lista temporal
 
+                try
+                {
+                    int procesado = Convert.ToInt32(entrada);
+        
+                    // Verifica que el número esté en el rango válido
+                    if (procesado > 0 && procesado <= Dic.Count)
+                    {
+                        contador++;
+                        Console.WriteLine($"Has elegido: {procesado}");
+                        P1equipoPorAsignar.Add(contador, Dic[procesado]); // Se van agregando los pokemons a una lista temporal
+                    }
+                    else
+                    {
+                        Console.WriteLine("Entrada no válida. Por favor, introduce un número entero entre 1 y " + Dic.Count + ".");
+                    }
                 }
-                else
+                catch (FormatException)
                 {
                     Console.WriteLine("Entrada no válida. Por favor, introduce un número entero.");
                 }
-
+                catch (OverflowException)
+                {
+                    Console.WriteLine("El número es demasiado grande. Por favor, introduce un número válido.");
+                }
             }
+
 
             player.cambiarEquipo(P1equipoPorAsignar); // Se Cambian los pokemons por el  principal
             foreach (var item in P1equipoPorAsignar)
@@ -97,5 +109,5 @@ public class InicializarPlayers
             rival.cambiarPokemon();
         }
 
-    }
+}
 
