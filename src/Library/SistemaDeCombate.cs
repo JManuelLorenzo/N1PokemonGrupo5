@@ -46,7 +46,6 @@ namespace Library
                 IAtaque habilidadElegida = habilidadesActuales[ataqueElegido-1];
                 int damage = ProcesamientoDaño(pokemonEnTurno, pokemonEnemigo, habilidadElegida);
                 pokemonEnemigo.RecibirDaño(damage);
-                Console.WriteLine($"Poder de ataque: {habilidadElegida.GetPower()}, Ataque del Pokémon: {pokemonEnTurno.GetAttack()}, Defensa del enemigo: {pokemonEnemigo.GetDefense()}");
 
 
                 if (pokemonEnemigo.GetHealth() <= 0)

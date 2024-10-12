@@ -14,6 +14,10 @@ public class Player
     {
         pokemons = new Dictionary<int, IPokemon>(); // Inicializa el diccionario
     }
+    public string getNombre()
+    {
+        return nombre;
+    }
 
 
     public void cambiarNombre(string valor)
@@ -37,37 +41,35 @@ public class Player
 
     public void cambiarPokemon()
     {
-        DevuelveEquipo();
+        DevuelveEquipo(); // Suponiendo que esto muestra el equipo de Pokémon
+
+        int entrada;
+        while (true) // Bucle para obtener una entrada válida
         {
-            int entrada;
-            do
+            try
             {
-                try
-                {
-                    Console.WriteLine($"Elige que Pokemon va a el campo de batalla {getNombre()}// Ingresa el pokemon por el num");
-                    entrada = Convert.ToInt32(Console.ReadLine());
-                    break;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Eso no era un numero, intente de vuelta");
-                }
-            } while (true);
-            if (pokemons.ContainsKey(entrada))
-            {
+                Console.WriteLine($"Elige qué Pokémon va al campo de batalla {nombre}. Ingresa el número del Pokémon:");
+                entrada = Convert.ToInt32(Console.ReadLine());
+
+                // Intentar acceder al Pokémon seleccionado
                 selectedPokemon = pokemons[entrada];
-
-
+                break; // Salir del bucle si todo es correcto
             }
-            else
+            catch (FormatException)
             {
-                Console.WriteLine("No existe Pokémon con ese número, se te asignara uno aleatorio de tu equipo");
-                Random random = new Random();
-                int randomNumber = random.Next(1, pokemons.Count+1);
-                selectedPokemon = pokemons[randomNumber];
+                Console.WriteLine("Eso no era un número, intente de nuevo.");
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine("Eso estaba fuera de rango, intente de nuevo.");
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine("Eso estaba fuera de rango, intente de nuevo.");
             }
         }
     }
+
 
     public void EliminarPokemon(IPokemon pokemon)
     {
@@ -98,8 +100,5 @@ public class Player
         return selectedPokemon;
     }
 
-    public string getNombre()
-    {
-        return nombre;
-    }
+    
 }
