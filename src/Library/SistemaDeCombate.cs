@@ -27,48 +27,70 @@ namespace Library
         }
 
         public void Atacar(Player playerEnTurno, Player playerEnemigo)
+{
+    IPokemon pokemonEnTurno = playerEnTurno.getSelectedPokemon();
+    IPokemon pokemonEnemigo = playerEnemigo.getSelectedPokemon();
+    List<IAtaque> habilidadesActuales = pokemonEnTurno.GetAbilities();
+
+    Console.WriteLine("Elige tu Ataque:");
+    int contador = 0;
+    foreach (var habilidad in habilidadesActuales)
+    {
+        contador++;
+        Console.WriteLine($"{contador} - {habilidad.GetNombre()}");
+    }
+
+    int ataqueElegido = 0;
+    bool ataqueValido = false;
+
+    while (!ataqueValido)
+    {
+        Console.Write("Introduce el número de ataque: ");
+        string entrada = Console.ReadLine();
+
+        try
         {
-            IPokemon pokemonEnTurno = playerEnTurno.getSelectedPokemon();
-            IPokemon pokemonEnemigo = playerEnemigo.getSelectedPokemon();
-            List<IAtaque> habilidadesActuales = pokemonEnTurno.GetAbilities();
+            ataqueElegido = Convert.ToInt32(entrada);
 
-            Console.WriteLine("Elige tu Ataque:");
-            int contador = 0;
-            foreach (var habilidad in habilidadesActuales)
+            // Verificar el rango
+            if (ataqueElegido < 1 || ataqueElegido > habilidadesActuales.Count)
             {
-                contador++;
-                Console.WriteLine(contador + " - " + habilidad.GetNombre());
+                throw new ArgumentOutOfRangeException();
             }
 
-            int ataqueElegido;
-            if (int.TryParse(Console.ReadLine(), out ataqueElegido) && ataqueElegido > 0 && ataqueElegido <= 4)
+            IAtaque habilidadElegida = habilidadesActuales[ataqueElegido - 1];
+            int damage = ProcesamientoDaño(pokemonEnTurno, pokemonEnemigo, habilidadElegida);
+            pokemonEnemigo.RecibirDaño(damage);
+
+            if (pokemonEnemigo.GetHealth() <= 0)
             {
-                IAtaque habilidadElegida = habilidadesActuales[ataqueElegido-1];
-                int damage = ProcesamientoDaño(pokemonEnTurno, pokemonEnemigo, habilidadElegida);
-                pokemonEnemigo.RecibirDaño(damage);
-
-
-                if (pokemonEnemigo.GetHealth() <= 0)
-                {
-                    playerEnemigo.EliminarPokemon(pokemonEnemigo);
-                }
-                
+                playerEnemigo.EliminarPokemon(pokemonEnemigo);
             }
-            else
-            {
-                Random random = new Random();
-                int randomNumber = random.Next(1, 5);
-                IAtaque habilidadElegida = habilidadesActuales[randomNumber-1];
-                Console.WriteLine($"Eso no es un ataque, has usado {habilidadElegida.GetNombre()} de tu pokemon");
-                
-                int damage = ProcesamientoDaño(pokemonEnTurno, pokemonEnemigo, habilidadElegida);
-                pokemonEnemigo.RecibirDaño(damage);
-                Console.WriteLine($"Poder de ataque: {habilidadElegida.GetPower()}, Ataque del Pokémon: {pokemonEnTurno.GetAttack()}, Defensa del enemigo: {pokemonEnemigo.Defense}");
 
-                
-            }
-            
+            ataqueValido = true; // Solo se establece si la entrada es válida
         }
+        catch (FormatException)
+        {
+            Console.WriteLine("Entrada no válida. Por favor, introduce un número entero.");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("El número es demasiado grande. Por favor, introduce un número válido.");
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.WriteLine($"Entrada no válida. Por favor, elige un número entre 1 y {habilidadesActuales.Count}.");
+        }
+        catch (KeyNotFoundException)
+        {
+            Console.WriteLine("La habilidad seleccionada no existe. Por favor, inténtalo de nuevo.");
+        }
+    }
+}
+
+          
+                
+        
 
 
         public void turno(Player playerEnTurno, Player playerEnemigo)
