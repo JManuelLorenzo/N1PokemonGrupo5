@@ -1,5 +1,6 @@
 # N1PokemonGrupo5
-
+### Del UML Y CRC PARA VERLOS CON MAYOR DETALLE:
+https://miro.com/app/board/uXjVLVt8VF4=/?share_link_id=589442540382
 ## Desafios
 
 - Algunos de los desafios que tuvimos con el proyecto fueron la incorporación de interfaces,
