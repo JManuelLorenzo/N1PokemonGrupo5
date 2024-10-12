@@ -30,3 +30,4 @@ UML
 
 ## Extra
 
+- El proyecto es bastante complejo pero eso nos va ayudar a mejorar en muchos aspectos con el código y con los siguientes.
