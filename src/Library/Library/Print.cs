@@ -3,6 +3,18 @@ namespace Library;
 public class Print
 {
     PokemonsYHablidades pokemonsYHablidades = new PokemonsYHablidades();
+    
+    public void parteDeArriba()
+    {
+        Console.WriteLine( "╔═════════════════════════════════════════╗");
+
+    }
+
+    public void parteDeAbajo()
+    {
+        Console.WriteLine("╚═════════════════════════════════════════╝");
+
+    }
 
     public void startPrint()
     {
@@ -37,27 +49,24 @@ public class Print
         Console.WriteLine($"║ Ingrese el nombre del Jugador {num}:        ║");
         Console.WriteLine( "╚═════════════════════════════════════════╝");
     }
-
-    public void mostrarListaPokemons()
-    {
-        // Pokemon Selection Prompt
-        Console.WriteLine("╔═════════════════════════════════════════╗");
-        Console.WriteLine("║        Selecciona tus pokemons!         ║");
-        Console.WriteLine("╚═════════════════════════════════════════╝");
-        foreach (int valor in pokemonsYHablidades.DevolverDicP1().Keys) // No estoy seguro de que funcione por el foreach, la logica del resto es correcta.
-        {
-            Console.WriteLine("╔═════════════════════════════════════════╗");
-            Console.WriteLine(valor + "-" + pokemonsYHablidades.DevolverDicP1()[valor].Name + " ║");
-            Console.WriteLine("╚═════════════════════════════════════════╝");
-
-        }
-        
-    }
-
-    public void mostrarListaPokemonsRival()
+    public void selectSign()
     {
         Console.WriteLine("╔═════════════════════════════════════════╗");
         Console.WriteLine("║        Selecciona sus pokemons!         ║");
         Console.WriteLine("╚═════════════════════════════════════════╝");
     }
+
+    public void tuEquipoSign()
+    {
+        Console.WriteLine("╔═════════════════════════════════════════╗");
+        Console.WriteLine("║           Este es tu equipo!            ║");
+        Console.WriteLine("╚═════════════════════════════════════════╝");
+    }
+    public void printMyTeam(string llave1, string llave2) //$"Numero: {item.Key}, Nombre: {item.Value.Name}");
+    {
+        Console.WriteLine($"  {llave1}- {llave2}");
+        
+    }
+    
+    
 }

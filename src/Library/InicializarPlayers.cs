@@ -34,10 +34,8 @@ public class InicializarPlayers
         PokemonsYHablidades pokemonsYHablidades = new PokemonsYHablidades();
         pokemonsYHablidades.CrearPokemons();
 
-        impresiones.mostrarListaPokemons();
-        Console.WriteLine("Elige los pokemons de tu equipo.");
         AsignarCadaPokemon(pokemonsYHablidades, 1,player1);
-        impresiones.mostrarListaPokemons();
+
         AsignarCadaPokemon(pokemonsYHablidades,2,rival);
         
         void AsignarCadaPokemon(PokemonsYHablidades ClaseCreadora, int opcion, Player player)
@@ -52,11 +50,13 @@ public class InicializarPlayers
             {
                 Dic = ClaseCreadora.DevolverDicP2();
             }
-            
-            
+
+            impresiones.selectSign();
             foreach (int valor in Dic.Keys) 
             {
-                Console.WriteLine(valor + "-" + Dic[valor].GetName());
+                Console.WriteLine("╔═════════════════════════════════════════╗");
+                Console.WriteLine("  "+(valor + "-" + Dic[valor].GetName()));
+                Console.WriteLine("╚═════════════════════════════════════════╝");
             }
 
             Dictionary<int, IPokemon> P1equipoPorAsignar = new Dictionary<int, IPokemon>(); // Lista temporal de Pokemons
@@ -75,7 +75,8 @@ public class InicializarPlayers
                     if (procesado > 0 && procesado <= Dic.Count)
                     {
                         contador++;
-                        Console.WriteLine($"Has elegido: {procesado}");
+                        string imprimirNombrePokemon = Dic[procesado].GetName();
+                        Console.WriteLine($"Has elegido: {imprimirNombrePokemon}!\n");
                         P1equipoPorAsignar.Add(contador, Dic[procesado]); // Se van agregando los pokemons a una lista temporal
                     }
                     else
@@ -95,10 +96,15 @@ public class InicializarPlayers
 
 
             player.cambiarEquipo(P1equipoPorAsignar); // Se Cambian los pokemons por el  principal
+            impresiones.tuEquipoSign();
             foreach (var item in P1equipoPorAsignar)
             {
-                Console.WriteLine($"Clave: {item.Key}, Valor: {item.Value.Name}"); // NO se 
+                string llave = item.Key.ToString();
+                string llave2 = item.Value.Name;
+                impresiones.printMyTeam(llave, llave2);
+                
             }
+            impresiones.parteDeAbajo();
         }
     }
 
